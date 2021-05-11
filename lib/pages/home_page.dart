@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_widgets/infinite_widgets.dart';
+import 'detail_page.dart';
+import '../widgets/pokemon_card.dart';
 import '../controllers/home_controller.dart';
 import '../core/app_const.dart';
 import '../repositories/poke_repository_impl.dart';
@@ -26,13 +28,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(kAppTitle),
-      ),
+      appBar: _buildAppBar(),
       body: Container(
         child: InfiniteGridView(
-          gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+          ),
           itemBuilder: _buildPokemonCard,
           itemCount: _controller.length,
           hasNext: _controller.length < 1118,
@@ -43,6 +44,29 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  AppBar _buildAppBar() {
+    return AppBar(
+      title: Text(
+        kAppTitle,
+        style: TextStyle(
+          color: Colors.black,
+          fontFamily: 'Pokemon',
+        ),
+      ),
+      centerTitle: true,
+      backgroundColor: Colors.white,
+      iconTheme: IconThemeData(
+        color: Colors.black,
+      ),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.info_outline),
+          onPressed: () {},
+        )
+      ],
+    );
+  }
+
   void _onNextData() async {
     await _controller.next();
     setState(() {});
@@ -50,8 +74,17 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildPokemonCard(BuildContext context, int index) {
     final pokemon = _controller.pokemons[index];
-    return Container(
-      child: Text(pokemon.name),
+    return PokemonCard(
+      pokemon: pokemon,
+      onPressed: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => DetailPage(
+              pokemon: pokemon,
+            ),
+          ),
+        );
+      },
     );
   }
 }
