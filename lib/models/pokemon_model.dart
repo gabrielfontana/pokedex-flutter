@@ -30,7 +30,6 @@ class PokemonModel {
   factory PokemonModel.fromMap(Map<String, dynamic> json) {
     final typeList = json['types'] as List;
     final statsList = json['stats'] as List;
-
     final id = json['id'];
 
     return PokemonModel(
@@ -43,10 +42,10 @@ class PokemonModel {
           'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$id.png',
       type1: typeList[0]['type']['name'],
       type2: typeList.length == 2 ? typeList[1]['type']['name'] : null,
-      health: statsList[0]['stat']['hp'],
-      attack: statsList[0]['stat']['attack'],
-      defense: statsList[0]['stat']['defense'],
-      speed: statsList[0]['stat']['speed'],
+      health: statsList[0]['base_stat'],
+      attack: statsList[1]['base_stat'],
+      defense: statsList[2]['base_stat'],
+      speed: statsList[5]['base_stat'],
     );
   }
 }

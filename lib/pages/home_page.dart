@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:infinite_widgets/infinite_widgets.dart';
+import 'package:pokedex/widgets/infinite_grid_view.dart';
 import 'detail_page.dart';
 import '../widgets/pokemon_card.dart';
 import '../controllers/home_controller.dart';
@@ -29,17 +29,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: Container(
-        child: InfiniteGridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-          ),
-          itemBuilder: _buildPokemonCard,
-          itemCount: _controller.length,
-          hasNext: _controller.length < 1118,
-          nextData: _onNextData,
-          shrinkWrap: true,
-        ),
+      body: InfiniteGridView(
+        crossAxisCount: 2,
+        itemBuilder: _buildPokemonCard,
+        itemCount: _controller.length,
+        hasNext: _controller.length < 1118,
+        nextData: _onNextData,
       ),
     );
   }
