@@ -21,7 +21,16 @@ class PokemonCard extends StatelessWidget {
         margin: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: PokemonHelper.getColor(pokemon.type1),
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              pokemon.type2 != null
+                  ? PokemonHelper.getColor(pokemon.type2)
+                  : PokemonHelper.getColor(pokemon.type1),
+              PokemonHelper.getColor(pokemon.type1),
+            ],
+          ),
           boxShadow: [
             BoxShadow(
               color: PokemonHelper.getColor(pokemon.type1).withOpacity(0.5),
