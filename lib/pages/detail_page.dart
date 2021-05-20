@@ -39,15 +39,10 @@ class _DetailPageState extends State<DetailPage> {
     return AppBar(
       title: Text(
         _controller.name,
-        // style: TextStyle(
-        //   color: Colors.black,
-        //   fontFamily: 'Pokemon',
-        // ),
       ),
       centerTitle: true,
       elevation: 0.0,
       backgroundColor: _controller.primaryColor,
-      //iconTheme: IconThemeData(color: Colors.black),
       actions: [
         Container(
           height: 52.0,
@@ -56,7 +51,6 @@ class _DetailPageState extends State<DetailPage> {
             child: Text(
               _controller.id,
               style: TextStyle(
-                //color: Colors.black,
                 fontSize: 18.0,
               ),
             ),
@@ -116,7 +110,7 @@ class _DetailPageState extends State<DetailPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 10),
             child: Text(
               'Estatísticas',
               textAlign: TextAlign.center,
