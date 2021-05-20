@@ -67,17 +67,19 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   Widget _buildBody() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        PokemonHeader(
-          backgroundColor: _controller.primaryColor,
-          imageUrl: _controller.imageUrl,
-        ),
-        _buildTypes(),
-        _buildMetrics(),
-        _buildStats(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          PokemonHeader(
+            backgroundColor: _controller.primaryColor,
+            imageUrl: _controller.imageUrl,
+          ),
+          _buildTypes(),
+          _buildMetrics(),
+          _buildStats(),
+        ],
+      ),
     );
   }
 
@@ -130,17 +132,27 @@ class _DetailPageState extends State<DetailPage> {
             foregroundColor: _controller.primaryColor,
           ),
           PokemonStatBar(
-            label: 'ATK',
+            label: 'Attack',
             value: _controller.attack,
             foregroundColor: _controller.primaryColor,
           ),
           PokemonStatBar(
-            label: 'DEF',
+            label: 'Defense',
             value: _controller.defense,
             foregroundColor: _controller.primaryColor,
           ),
           PokemonStatBar(
-            label: 'SPD',
+            label: 'Sp. Atk',
+            value: _controller.specialAttack,
+            foregroundColor: _controller.primaryColor,
+          ),
+          PokemonStatBar(
+            label: 'Sp. Def',
+            value: _controller.specialDefense,
+            foregroundColor: _controller.primaryColor,
+          ),
+          PokemonStatBar(
+            label: 'Speed',
             value: _controller.speed,
             foregroundColor: _controller.primaryColor,
           ),

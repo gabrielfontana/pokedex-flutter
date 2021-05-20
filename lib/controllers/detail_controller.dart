@@ -15,6 +15,8 @@ class DetailController {
   int get health => _pokemon.health;
   int get attack => _pokemon.attack;
   int get defense => _pokemon.defense;
+  int get specialAttack => _pokemon.specialAttack;
+  int get specialDefense => _pokemon.specialDefense;
   int get speed => _pokemon.speed;
   String get imageUrl => _pokemon.imageUrl;
   List<String> get types {

@@ -41,7 +41,7 @@ class PokemonStatBar extends StatelessWidget {
 
   Widget _buildLabel() {
     return Container(
-      width: 50.0,
+      width: 75.0,
       child: Text(
         label.toUpperCase(),
         style: TextStyle(
