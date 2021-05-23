@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/widgets/infinite_grid_view.dart';
+import '../widgets/infinite_grid_view.dart';
 import 'detail_page.dart';
 import '../widgets/pokemon_card.dart';
 import '../controllers/home_controller.dart';
@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _controller = HomeController(PokeRepositoryImpl());
+  bool isSearching = false;
 
   @override
   void initState() {
@@ -41,25 +42,73 @@ class _HomePageState extends State<HomePage> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      title: Text(
-        kAppTitle,
-        style: TextStyle(
-          color: Colors.black,
-          fontFamily: 'Pokemon',
-        ),
-      ),
+      title: !isSearching
+          ? Text(
+              kAppTitle,
+              style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'Pokemon',
+              ),
+            )
+          : TextField(
+              onChanged: (searchText) {
+                _filterPokemons(searchText);
+              },
+              style: TextStyle(
+                color: Colors.black,
+              ),
+              autofocus: true,
+              decoration: InputDecoration(
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+                hintText: "Pesquisar...",
+                hintStyle: TextStyle(
+                  color: Colors.black,
+                ),
+                icon: Icon(
+                  Icons.search,
+                  color: Colors.black,
+                ),
+              ),
+            ),
       centerTitle: true,
       backgroundColor: Colors.white,
       iconTheme: IconThemeData(
         color: Colors.black,
       ),
-      actions: [
-        IconButton(
-          icon: Icon(Icons.info_outline),
-          onPressed: () {},
-        )
+      actions: <Widget>[
+        isSearching
+            ? Container(
+                margin: EdgeInsets.only(right: 10),
+                child: IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: () {
+                    setState(() {
+                      this.isSearching = false;
+                    });
+                  },
+                ),
+              )
+            : Container(
+                margin: EdgeInsets.only(right: 10),
+                child: IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    setState(() {
+                      this.isSearching = true;
+                    });
+                  },
+                ),
+              ),
       ],
     );
+  }
+
+  void _filterPokemons(searchText) {
+    searchText = searchText.toLowerCase();
+    print(searchText);
   }
 
   void _onNextData() async {
