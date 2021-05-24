@@ -18,6 +18,7 @@ class DetailController {
   int get specialAttack => _pokemon.specialAttack;
   int get specialDefense => _pokemon.specialDefense;
   int get speed => _pokemon.speed;
+  String get ability => _pokemon.ability;
   String get imageUrl => _pokemon.imageUrl;
   List<String> get types {
     var list = [_pokemon.type1];

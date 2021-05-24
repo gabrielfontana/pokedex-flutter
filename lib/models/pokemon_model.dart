@@ -16,6 +16,8 @@ class PokemonModel {
   final int specialAttack;
   final int specialDefense;
 
+  final String ability;
+
   PokemonModel({
     this.id,
     this.name,
@@ -30,11 +32,13 @@ class PokemonModel {
     this.speed,
     this.specialAttack,
     this.specialDefense,
+    this.ability,
   });
 
   factory PokemonModel.fromMap(Map<String, dynamic> json) {
     final typeList = json['types'] as List;
     final statsList = json['stats'] as List;
+    final abilitiesList = json['abilities'] as List;
     final id = json['id'];
 
     return PokemonModel(
@@ -53,6 +57,7 @@ class PokemonModel {
       specialAttack: statsList[3]['base_stat'],
       specialDefense: statsList[4]['base_stat'],
       speed: statsList[5]['base_stat'],
+      ability: abilitiesList[0]['ability']['name'],
     );
   }
 }

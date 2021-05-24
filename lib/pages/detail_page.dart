@@ -110,7 +110,7 @@ class _DetailPageState extends State<DetailPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 25),
             child: Text(
               'Estatísticas',
               textAlign: TextAlign.center,
@@ -149,6 +149,27 @@ class _DetailPageState extends State<DetailPage> {
             label: 'Speed',
             value: _controller.speed,
             foregroundColor: _controller.primaryColor,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 25),
+            child: Text(
+              'Habilidade 1',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Container(
+            width: 75.0,
+            child: Text(
+              _controller.ability.toUpperCase(),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),
