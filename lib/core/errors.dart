@@ -1,5 +1,5 @@
 abstract class Failure implements Exception {
-  final String message;
+  final String? message;
 
   Failure({
     this.message,
@@ -7,7 +7,7 @@ abstract class Failure implements Exception {
 
   @override
   String toString() {
-    return message;
+    return message!;
   }
 }
 

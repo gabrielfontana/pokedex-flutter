@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class PokemonStatBar extends StatelessWidget {
-  final String label;
-  final int value;
+  final String? label;
+  final int? value;
   final int maxValue;
   final Color backgroundColor;
-  final Color foregroundColor;
+  final Color? foregroundColor;
   final double height;
 
   const PokemonStatBar({
-    Key key,
+    Key? key,
     this.label,
     this.value,
     this.maxValue = 300,
@@ -29,7 +29,7 @@ class PokemonStatBar extends StatelessWidget {
             child: Stack(
               children: [
                 _buildBar(color: backgroundColor, value: maxValue),
-                _buildBar(color: foregroundColor, value: value),
+                _buildBar(color: foregroundColor, value: value!),
                 _buildBarText(),
               ],
             ),
@@ -43,7 +43,7 @@ class PokemonStatBar extends StatelessWidget {
     return Container(
       width: 75.0,
       child: Text(
-        label.toUpperCase(),
+        label!.toUpperCase(),
         style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class PokemonStatBar extends StatelessWidget {
     );
   }
 
-  Widget _buildBar({Color color, int value}) {
+  Widget _buildBar({Color? color, required int value}) {
     return FractionallySizedBox(
       widthFactor: value / maxValue,
       child: Container(

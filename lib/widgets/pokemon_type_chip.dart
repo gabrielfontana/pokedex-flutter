@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/helpers/pokemon_type_helper.dart';
 
 class PokemonTypeChip extends StatelessWidget {
-  final String type;
+  final String? type;
 
   const PokemonTypeChip({
-    Key key,
+    Key? key,
     this.type,
   }) : super(key: key);
 
@@ -22,14 +22,14 @@ class PokemonTypeChip extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       label: Text(
-        type,
+        type!,
         style: TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.white,
           fontSize: 16.0,
         ),
       ),
-      backgroundColor: PokemonTypeHelper.getColor(type),
+      backgroundColor: PokemonTypeHelper.getColor(type!),
     );
   }
 }

@@ -7,10 +7,10 @@ import '../widgets/horizontal_bar.dart';
 import '../widgets/pokemon_type_chip.dart';
 
 class DetailPage extends StatefulWidget {
-  final PokemonModel pokemon;
+  final PokemonModel? pokemon;
 
   const DetailPage({
-    Key key,
+    Key? key,
     this.pokemon,
   }) : super(key: key);
 

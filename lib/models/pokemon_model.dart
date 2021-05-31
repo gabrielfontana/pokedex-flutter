@@ -6,7 +6,7 @@ class PokemonModel {
   final String imageUrl;
 
   final String type1;
-  final String type2;
+  final String? type2;
 
   final int health;
   final int attack;
@@ -19,20 +19,20 @@ class PokemonModel {
   final String ability;
 
   PokemonModel({
-    this.id,
-    this.name,
-    this.height,
-    this.weight,
-    this.imageUrl,
-    this.type1,
+    required this.id,
+    required this.name,
+    required this.height,
+    required this.weight,
+    required this.imageUrl,
+    required this.type1,
     this.type2,
-    this.health,
-    this.attack,
-    this.defense,
-    this.speed,
-    this.specialAttack,
-    this.specialDefense,
-    this.ability,
+    required this.health,
+    required this.attack,
+    required this.defense,
+    required this.speed,
+    required this.specialAttack,
+    required this.specialDefense,
+    required this.ability,
   });
 
   factory PokemonModel.fromMap(Map<String, dynamic> json) {

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 class InfiniteGridView extends StatefulWidget {
   final int crossAxisCount;
-  final int itemCount;
-  final Widget Function(BuildContext, int) itemBuilder;
-  final bool hasNext;
+  final int? itemCount;
+  final Widget Function(BuildContext, int)? itemBuilder;
+  final bool? hasNext;
   final double scrollExtent;
-  final Function() nextData;
+  final Function()? nextData;
   final EdgeInsets padding;
 
   const InfiniteGridView({
-    Key key,
+    Key? key,
     this.itemCount,
     this.itemBuilder,
     this.hasNext,
@@ -25,29 +25,29 @@ class InfiniteGridView extends StatefulWidget {
 }
 
 class _InfiniteGridViewState extends State<InfiniteGridView> {
-  ScrollController _scrollController;
+  ScrollController? _scrollController;
   bool loading = false;
 
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
-    _scrollController.addListener(_onScrollListener);
+    _scrollController!.addListener(_onScrollListener);
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    _scrollController!.dispose();
     super.dispose();
   }
 
   Future<void> _onScrollListener() async {
-    final currentScroll = _scrollController.position.pixels;
+    final currentScroll = _scrollController!.position.pixels;
     final maxScroll =
-        _scrollController.position.maxScrollExtent * widget.scrollExtent;
+        _scrollController!.position.maxScrollExtent * widget.scrollExtent;
     if (!loading && currentScroll >= maxScroll) {
       loading = true;
-      await widget.nextData();
+      await widget.nextData!();
       loading = false;
     }
   }
@@ -79,12 +79,12 @@ class _InfiniteGridViewState extends State<InfiniteGridView> {
         crossAxisCount: widget.crossAxisCount,
       ),
       itemCount: widget.itemCount,
-      itemBuilder: widget.itemBuilder,
+      itemBuilder: widget.itemBuilder!,
     );
   }
 
   _buildNextDataLoading() {
-    if (widget.hasNext) {
+    if (widget.hasNext!) {
       return Container(
         height: 100.0,
         padding: const EdgeInsets.only(top: 20, bottom: 40),

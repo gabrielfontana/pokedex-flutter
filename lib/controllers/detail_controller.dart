@@ -3,7 +3,7 @@ import '../helpers/pokemon_helper.dart';
 import '../models/pokemon_model.dart';
 
 class DetailController {
-  PokemonModel _pokemon;
+  late PokemonModel _pokemon;
 
   void setPokemon(value) => _pokemon = value;
 
@@ -20,9 +20,9 @@ class DetailController {
   int get speed => _pokemon.speed;
   String get ability => _pokemon.ability;
   String get imageUrl => _pokemon.imageUrl;
-  List<String> get types {
+  List<String?> get types {
     var list = [_pokemon.type1];
-    if (_pokemon.type2 != null) list.add(_pokemon.type2);
+    if (_pokemon.type2 != null) list.add(_pokemon.type2!);
     return list;
   }
 }

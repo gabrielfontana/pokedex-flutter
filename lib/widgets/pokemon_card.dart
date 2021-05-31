@@ -3,11 +3,11 @@ import '../helpers/pokemon_helper.dart';
 import '../models/pokemon_model.dart';
 
 class PokemonCard extends StatelessWidget {
-  final PokemonModel pokemon;
-  final Function onPressed;
+  final PokemonModel? pokemon;
+  final Function? onPressed;
 
   const PokemonCard({
-    Key key,
+    Key? key,
     this.pokemon,
     this.onPressed,
   }) : super(key: key);
@@ -15,7 +15,7 @@ class PokemonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: onPressed as void Function()?,
       child: Container(
         padding: const EdgeInsets.all(10.0),
         margin: const EdgeInsets.all(10.0),
@@ -25,15 +25,15 @@ class PokemonCard extends StatelessWidget {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              pokemon.type2 != null
-                  ? PokemonHelper.getColor(pokemon.type2)
-                  : PokemonHelper.getColor(pokemon.type1),
-              PokemonHelper.getColor(pokemon.type1),
+              pokemon!.type2 != null
+                  ? PokemonHelper.getColor(pokemon!.type2!)
+                  : PokemonHelper.getColor(pokemon!.type1),
+              PokemonHelper.getColor(pokemon!.type1),
             ],
           ),
           boxShadow: [
             BoxShadow(
-              color: PokemonHelper.getColor(pokemon.type1).withOpacity(0.5),
+              color: PokemonHelper.getColor(pokemon!.type1).withOpacity(0.5),
               blurRadius: 5.0,
               offset: Offset(3, 2),
             ),
@@ -42,9 +42,9 @@ class PokemonCard extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Image.network(pokemon.imageUrl, fit: BoxFit.fill),
+              child: Image.network(pokemon!.imageUrl, fit: BoxFit.fill),
             ),
-            Text(pokemon.name),
+            Text(pokemon!.name),
           ],
         ),
       ),

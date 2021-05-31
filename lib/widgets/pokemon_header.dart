@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class PokemonHeader extends StatelessWidget {
-  final String imageUrl;
-  final Color backgroundColor;
+  final String? imageUrl;
+  final Color? backgroundColor;
 
   const PokemonHeader({
-    Key key,
+    Key? key,
     this.imageUrl,
     this.backgroundColor,
   }) : super(key: key);
@@ -36,7 +36,7 @@ class PokemonHeader extends StatelessWidget {
             height: size.width * 0.5,
             width: size.width,
             child: Image.network(
-              imageUrl,
+              imageUrl!,
               fit: BoxFit.fitHeight,
             ),
           ),

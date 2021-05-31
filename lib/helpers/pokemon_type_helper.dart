@@ -6,10 +6,6 @@ class PokemonTypeHelper {
   static Color getColor(String type) {
     type = type.toLowerCase();
 
-    if (type == null) {
-      return Color(0xffdbd9d9);
-    }
-
     switch (type) {
       case 'fire':
         return Color(0xffF08030);
@@ -52,7 +48,7 @@ class PokemonTypeHelper {
     }
   }
 
-  static String getIcon(String type) {
+  static String getIcon(String? type) {
     switch (type) {
       case 'fire':
         return 'G';
