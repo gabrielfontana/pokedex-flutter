@@ -12,4 +12,4 @@ Gabriel Fontana Junqueira Araújo
 *   [X] Trocar a fonte do título da Pokédex para fonte Pokemon;
 *   [X] Escolher uma nova informação da PokeAPI e trazer para interface gráfica;
 *   [+/-] Criar uma barra de busca de pokemon na HomePage;
-*   [] Converter o código para null safety;
+*   [X] Converter o código para null safety;
