@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _controller = HomeController(PokeRepositoryImpl());
-  bool isSearching = false;
+  bool searching = false;
 
   @override
   void initState() {
@@ -31,10 +31,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: _buildAppBar(),
       body: InfiniteGridView(
-        crossAxisCount: 2,
+        crossAxisCount: kCrossAxisCount,
         itemBuilder: _buildPokemonCard,
         itemCount: _controller.length,
-        hasNext: _controller.length < 1118,
+        hasNext: _controller.length < kPokemonAmount,
         nextData: _onNextData,
       ),
     );
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      title: !isSearching
+      title: !searching
           ? Text(
               kAppTitle,
               style: TextStyle(
@@ -59,14 +59,14 @@ class _HomePageState extends State<HomePage> {
               ),
               autofocus: true,
               decoration: InputDecoration(
+                hintText: kLabelHintText,
+                hintStyle: TextStyle(
+                  color: Colors.black,
+                ),
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
                 errorBorder: InputBorder.none,
                 disabledBorder: InputBorder.none,
-                hintText: "Pesquisar...",
-                hintStyle: TextStyle(
-                  color: Colors.black,
-                ),
                 icon: Icon(
                   Icons.search,
                   color: Colors.black,
@@ -79,25 +79,25 @@ class _HomePageState extends State<HomePage> {
         color: Colors.black,
       ),
       actions: <Widget>[
-        isSearching
+        searching
             ? Container(
-                margin: EdgeInsets.only(right: 10),
+                margin: EdgeInsets.only(right: kOnlyRigthMargin),
                 child: IconButton(
                   icon: Icon(Icons.close),
                   onPressed: () {
                     setState(() {
-                      this.isSearching = false;
+                      this.searching = false;
                     });
                   },
                 ),
               )
             : Container(
-                margin: EdgeInsets.only(right: 10),
+                margin: EdgeInsets.only(right: kOnlyRigthMargin),
                 child: IconButton(
                   icon: Icon(Icons.search),
                   onPressed: () {
                     setState(() {
-                      this.isSearching = true;
+                      this.searching = true;
                     });
                   },
                 ),
@@ -107,8 +107,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _filterPokemons(searchText) {
-    searchText = searchText.toLowerCase();
-    print(searchText);
+    // searchText = searchText.toLowerCase();
+    // print(searchText);
   }
 
   void _onNextData() async {

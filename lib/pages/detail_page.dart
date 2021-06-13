@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/core/app_const.dart';
 import '../controllers/detail_controller.dart';
 import '../models/pokemon_model.dart';
 import '../widgets/metric_tile.dart';
@@ -41,17 +42,17 @@ class _DetailPageState extends State<DetailPage> {
         _controller.name,
       ),
       centerTitle: true,
-      elevation: 0.0,
+      elevation: kElevation,
       backgroundColor: _controller.primaryColor,
       actions: [
         Container(
-          height: 52.0,
-          width: 80.0,
+          height: kContainerHeight52,
+          width: kContainerWidth80,
           child: Center(
             child: Text(
               _controller.id,
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: kAppBarFontSize,
               ),
             ),
           ),
@@ -91,13 +92,13 @@ class _DetailPageState extends State<DetailPage> {
       children: [
         MetricTile(
           value: _controller.weight,
-          label: 'Peso',
-          unit: 'kg',
+          label: kLabelWeight,
+          unit: kUnitWeight,
         ),
         MetricTile(
           value: _controller.height,
-          label: 'Altura',
-          unit: 'm',
+          label: kLabelHeight,
+          unit: kUnitHeight,
         ),
       ],
     );
@@ -105,58 +106,59 @@ class _DetailPageState extends State<DetailPage> {
 
   Widget _buildStats() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding:
+          const EdgeInsets.symmetric(horizontal: kSymmetricHorizontalPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 25),
+            padding: const EdgeInsets.only(top: kOnlyTopPadding),
             child: Text(
-              'Estatísticas',
+              kLabelStatistics,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: kFontSize,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
           PokemonStatBar(
-            label: 'HP',
+            label: kPokemonStatBarLabelHP,
             value: _controller.health,
             foregroundColor: _controller.primaryColor,
           ),
           PokemonStatBar(
-            label: 'Attack',
+            label: kPokemonStatBarLabelAttack,
             value: _controller.attack,
             foregroundColor: _controller.primaryColor,
           ),
           PokemonStatBar(
-            label: 'Defense',
+            label: kPokemonStatBarLabelDefense,
             value: _controller.defense,
             foregroundColor: _controller.primaryColor,
           ),
           PokemonStatBar(
-            label: 'Sp. Atk',
+            label: kPokemonStatBarLabelSpAttack,
             value: _controller.specialAttack,
             foregroundColor: _controller.primaryColor,
           ),
           PokemonStatBar(
-            label: 'Sp. Def',
+            label: kPokemonStatBarLabelDefAttack,
             value: _controller.specialDefense,
             foregroundColor: _controller.primaryColor,
           ),
           PokemonStatBar(
-            label: 'Speed',
+            label: kPokemonStatBarLabelSpeed,
             value: _controller.speed,
             foregroundColor: _controller.primaryColor,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 25),
+            padding: const EdgeInsets.only(top: kOnlyTopPadding),
             child: Text(
-              'Habilidade 1',
+              kPokemonLabelAbility1,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: kFontSize,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -166,7 +168,7 @@ class _DetailPageState extends State<DetailPage> {
             child: Text(
               _controller.ability.toUpperCase(),
               style: TextStyle(
-                fontSize: 16,
+                fontSize: kFontSize,
                 fontWeight: FontWeight.bold,
               ),
             ),
